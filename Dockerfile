@@ -1,6 +1,5 @@
-FROM node:alpine
-WORKDIR /usr/src/app
-COPY . .
-RUN npm install && npm update
-EXPOSE 4200
-CMD ["npm","start"]
+FROM nginx:alpine
+COPY  ./dist/angular8-springboot-client /usr/share/nginx/html
+COPY ./nginx.conf /etc/nginx/conf.d/default.conf
+CMD ["nginx", "-g", "daemon off;"]
+
