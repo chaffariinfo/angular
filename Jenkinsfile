@@ -9,9 +9,24 @@ pipeline {
         stage('Build') {
           steps {
             sh 'npm install'
-            sh 'ng build --prod'
           }
         }
+        stage ('Build'){
+          steps {
+            sh 'npm build --prod'
+          }
+        }
+        stage ('Creation image'){
+          steps {
+            sh 'docker build -t chaffariinfo/frontendapp .'
+          }
+        }
+        stage ('publication image'){
+          steps {
+            sh 'docker push chaffariinfo/frontendapp'
+          }
+        }
+
       }
 
 
