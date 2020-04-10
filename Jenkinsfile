@@ -1,14 +1,13 @@
 pipeline {
-      agent {
-        docker {
-          image 'node:10-alpine'
-          args '-p 3000:3000'
-        }
-      }
+      agent any
       stages {
         stage('Build') {
           steps {
             sh 'npm install'
+<<<<<<< HEAD
+=======
+            sh 'npm build --prod'
+>>>>>>> 5b788aa5e7febec84c0e4bb139907153a93a9021
           }
         }
         stage ('Build'){
